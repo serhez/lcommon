@@ -11,11 +11,6 @@ from .prompting import (
     construct_shots_str,
     read_prompt,
 )
-from .self_consistency import (
-    choose_response_via_sc,
-    construct_self_consistency_context,
-    parse_self_consistency_output,
-)
 from .threading import GuardedValue
 from .usage import Usage
 
@@ -31,12 +26,9 @@ __all__ = [
     "Usage",
     "read_prompt",
     "construct_shots_str",
-    "choose_response_via_sc",
     "NullLogger",
-    "construct_self_consistency_context",
     "merge_system_messages",
     "parse_context",
-    "parse_self_consistency_output",
     "classproperty",
     "BULLET_POINTS_CHARS",
     "END_CHARS",
