@@ -1,4 +1,4 @@
-from lmethods.protocols import Logger
+from lcommon.protocols import Logger
 
 
 class NullLogger:

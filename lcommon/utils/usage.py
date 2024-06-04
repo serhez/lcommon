@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from lmethods.protocols.usage import UsageInterface
+from lcommon.protocols.usage import UsageInterface
 
 
 @dataclass(kw_only=True)
