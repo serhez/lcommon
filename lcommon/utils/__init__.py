@@ -1,6 +1,6 @@
 import numpy as np
 
-from .context import merge_system_messages, parse_context
+from .context import merge_conversation, merge_system_messages, parse_context
 from .decomposition import DependencySyntax
 from .graphs import DAG, DirectedGraph, Edge, Node
 from .logging import NullLogger
@@ -27,6 +27,7 @@ __all__ = [
     "read_prompt",
     "construct_shots_str",
     "NullLogger",
+    "merge_conversation",
     "merge_system_messages",
     "parse_context",
     "classproperty",

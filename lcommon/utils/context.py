@@ -1,7 +1,12 @@
 import numpy as np
 
 from lcommon.protocols import Dataset
-from lcommon.types import AnnotatedConversation, Context
+from lcommon.types import (
+    AnnotatedConversation,
+    Context,
+    Conversation,
+    Message,
+)
 
 _DEFAULT_ROLE = "user"
 
@@ -117,6 +122,29 @@ def parse_context(context: Context) -> list[AnnotatedConversation]:
     raise ValueError(
         f"Invalid type for `context`: {type(context)}. Check the function's signature for allowed input types."
     )
+
+
+def merge_conversation(conversation: AnnotatedConversation | Conversation) -> Message:
+    """
+    Merges a conversation into a single message.
+
+    ### Parameters
+    -----------
+    `conversation`: the conversation to merge.
+
+    ### Returns
+    -----------
+    The conversation merged into a single message.
+    - If the conversation is empty, an empty string is returned.
+    """
+
+    if len(conversation) == 0:
+        return ""
+
+    if isinstance(conversation[0], dict):
+        return "\n".join(message["content"] for message in conversation)  # type: ignore[reportArgumentType]
+
+    return "\n".join(message for message in conversation)  # type: ignore
 
 
 def merge_system_messages(
