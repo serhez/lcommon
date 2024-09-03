@@ -11,7 +11,7 @@ from .prompting import (
     construct_shots_str,
     read_prompt,
 )
-from .threading import GuardedValue
+from .threading import GuardedValue, safe_exec_with_lock
 from .usage import Usage
 
 __all__ = [
@@ -31,6 +31,7 @@ __all__ = [
     "merge_system_messages",
     "parse_context",
     "classproperty",
+    "safe_exec_with_lock",
     "BULLET_POINTS_CHARS",
     "END_CHARS",
 ]
