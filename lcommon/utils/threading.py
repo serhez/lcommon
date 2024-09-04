@@ -1,13 +1,15 @@
 import threading
 from dataclasses import dataclass
-from typing import Any
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
 
 
 @dataclass
-class GuardedValue:
+class GuardedValue(Generic[T]):
     """A value guarded by a lock"""
 
-    value: Any
+    value: T
     """The value to be guarded."""
 
     lock: threading.Lock = threading.Lock()
@@ -31,6 +33,7 @@ def safe_exec_with_lock(lock: threading.Lock, func, *args, **kwargs):
     """
 
     lock.acquire()
+    res = None
     try:
         res = func(*args, **kwargs)
     finally:
